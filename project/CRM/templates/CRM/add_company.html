@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div style="margin-right:900px;margin-left:60px" class="form-group">
+  <form action="" method="post">
+    {% csrf_token %}
+    {% comment %}
+    {{ form.as_p }}
+    {% endcomment %}
+
+    {{ form.none_field.errors }}
+    <div class="mb-3">
+      <label for="{{ form.title.id_for_label }}" class="form-label">Title</label>
+      {{ form.title }}
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.CEO.id_for_label }}" class="form-label">CEO</label>
+      {{ form.CEO }}
+    </div>
+
+    <div>
+      <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+      {{ form.description }}
+    </div>
+
+    <div>
+      <label for="{{ form.address.id_for_label }}" class="form-label" style="margin-top:20px">Address : </label>
+      {{ form.address }}
+    </div>
+
+    <div>
+      <label for="{{ form.phone.id_for_label }}" class="form-label" style="margin-top:20px">Phone : </label>
+      {{ form.phone }}
+    </div>
+
+    <div>
+      <label for="{{ form.email.id_for_label }}" class="form-label" style="margin-top:20px">E-mail : </label>
+      {{ form.email }}
+    </div>
+
+      <button style="margin-top:20px" type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+</div>
+{% endblock %}

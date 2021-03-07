@@ -1,0 +1,9 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% for message in Messages %}
+        <p><strong>{{ message.author }}</strong></p>
+        <p>{{ message.text }}</p>
+        <p>{{ message.interaction_type }}     {{ message.mark }}</p>
+      {% endfor %}
+{% endblock %}

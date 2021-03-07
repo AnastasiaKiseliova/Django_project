@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Welcome to SuperCRM.2000</h1>
+
+{% if user.is_authenticated %}
+  <h2>You logged in as {{ user.username }}</h2>
+  <h3><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></h3>
+{% else %}
+  <h2>Now you are Guest</h2>
+  <h3>please <a href="{% url 'login' %}">log in</a> to start</h3>
+{% endif %}
+
+{% endblock %}

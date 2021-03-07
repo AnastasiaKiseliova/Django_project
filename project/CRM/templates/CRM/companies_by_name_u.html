@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'companies-nu' %}">Title ↓</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'companies-nr' %}">Title ↑</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'companies-du' %}">Date ↓</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'companies-dr' %}">Date ↑</a>
+  </li>
+</ul>
+</div>
+
+<div class="container">
+    {% for company in Companies_Title_Upright %}
+        <div class="card" style="width: 60rem;margin-top:20px">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'company-detail' company.pk %}">{{ company.title }}</a></h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ company.CEO }}</h6>
+                <p class="card-text">{{ company.description }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
