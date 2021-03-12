@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 
@@ -19,4 +19,10 @@ urlpatterns = [
     path('project/<int:pk>', views.ProjectDetailView.as_view(), name='project-detail'),
 
     path('add-company/', views.add_company, name='add-company'),
+    path('add-project/', views.add_project, name='add-project'),
+    path('add-message/', views.add_message, name='add-message'),
+    path('add-address/', views.add_address, name='add-address'),
+    path('add-keyword/', views.add_keyword, name='add-keyword'),
+    path('add-phone/', views.add_phone, name='add-phone'),
+    path('add-email/', views.add_email, name='add-email'),
 ]

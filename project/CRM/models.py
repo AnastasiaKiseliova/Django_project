@@ -96,7 +96,16 @@ class Phone(models.Model):
 class Email(models.Model):
     """ Model describing the e-mail """
     email = models.EmailField()
-    company_id = models.ForeignKey('Company', on_delete=models.CASCADE, verbose_name='email')
+    company = models.ForeignKey('Company', on_delete=models.CASCADE, verbose_name='email')
 
     def __str__(self):
         return self.email
+
+
+class Keyword(models.Model):
+    name = models.CharField(max_length=20, default="keyword")
+
+
+class UserPhoto(models.Model):
+    photo = models.FileField(upload_to='CRM/photos/')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='user')

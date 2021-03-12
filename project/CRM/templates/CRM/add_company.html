@@ -4,9 +4,6 @@
 <div style="margin-right:900px;margin-left:60px" class="form-group">
   <form action="" method="post">
     {% csrf_token %}
-    {% comment %}
-    {{ form.as_p }}
-    {% endcomment %}
 
     {{ form.none_field.errors }}
     <div class="mb-3">

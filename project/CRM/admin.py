@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, Company, Message, Address, Phone, Email
+from .models import Project, Company, Message, Address, Phone, Email, UserPhoto, Keyword
 
 
 admin.site.register(Message)
@@ -23,3 +23,13 @@ class CompanyAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'started')
     list_filter = ('started',)
+
+
+@admin.register(UserPhoto)
+class UserPhotoAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Keyword)
+class KeywordAdmin(admin.ModelAdmin):
+    list_display = ('name', )

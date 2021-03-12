@@ -1,25 +1,26 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<h2>Projects</h2>
   {% if Projects %}
-    <ul>
+      <div class="container">
       {% for project in Projects %}
-      <li>
-        <p>{{project.name}}</p>
-        <p><a href="{% url 'company-detail' project.company.pk %}">{{ project.company.title }}</a></p>
-        <p>{{project.description}}</p>
-        <p>{{project.published}}</p>
-      </li>
+        <div class="card" style="width: 60rem;margin-top:20px">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                    <p><a href="{% url 'project-detail' project.pk %}">{{project.name}}</a></p>
+                    <p><a href="{% url 'company-detail' project.company.pk %}">{{ project.company.title }}</a></p>
+                {% else %}
+                    <p>{{project.name}}</p>
+                    <p>{{ project.company.title }}</p>
+                {% endif %}
+                <p>{{project.description}}</p>
+                <p>{{project.published}}</p>
+            </div>
+        </div>
       {% endfor %}
-    </ul>
+      </div>
   {% else %}
       <p>There are no projects here now</p>
   {% endif %}
-{% else %}
-    <h2>Now you are Guest</h2>
-    <h3>please <a href="{% url 'login' %}">log in</a> to see this page</h3>
-{% endif %}
 
 {% endblock %}

@@ -1,9 +1,36 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<p><a href="{% url 'add-company' %}">Add Company</a></p>
-<p><a href="{% url 'add-company' %}">Add Project</a></p>
-<p><a href="{% url 'add-company' %}">Add Address</a></p>
-<p><a href="{% url 'add-company' %}">Add Phone</a></p>
-<p><a href="{% url 'add-company' %}">Add E-mail</a></p>
+{% if user.is_authenticated %}
+
+<div>
+    <div class="container-fluid">
+        <h1>{{ user.username }}</h1>
+        <img src="photos/Melchior.png" alt="user photo">
+    </div>
+
+    <div class="container-fluid">
+        <p><a href="{% url 'add-company' %}">Add Company</a></p>
+        <p><a href="{% url 'add-project' %}">Add Project</a></p>
+        <p><a href="{% url 'add-message' %}">Add Message</a></p>
+        <p><a href="{% url 'add-address' %}">Add Address</a></p>
+        <p><a href="{% url 'add-phone' %}">Add Phone</a></p>
+        <p><a href="{% url 'add-email' %}">Add E-mail</a></p>
+        <p><a href="{% url 'add-keyword' %}">Add Keyword</a></p>
+    </div>
+</div>
+
+{% endif %}
+
+<div class="container" style="margin-left:20px;margin-top:20px">
+    <h3>Messages : </h3>
+    {% for message in user.message_set.all %}
+        <div class="card" style="width: 60rem;margin-top:20px">
+            <div class="card-body">
+                <p class="card-title">{{ message.text }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
